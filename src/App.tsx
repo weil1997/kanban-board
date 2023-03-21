@@ -1,10 +1,11 @@
-import Sidebar from "./components/sidebar/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Board from "./components/Board/Board";
 
 export default function App() {
   return (
     <div className="main-container">
       <Sidebar />
-      <div>hej från board</div>
+      <Board />
     </div>
   );
 }

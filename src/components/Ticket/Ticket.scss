@@ -1,0 +1,22 @@
+.ticket {
+  background-color: var(--bg-gray);
+  padding: 20px 16px 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-gray);
+
+  h3 {
+    color: var(--text-lines);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 25px;
+  }
+}
