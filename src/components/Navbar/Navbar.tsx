@@ -1,18 +1,36 @@
 import React from "react";
+import { useBoardContext } from "../../context/BoardsContext";
 import "./Navbar.scss";
+import { ChevronDown } from "react-feather";
 
-export default function Navbar() {
-    const {currentProject} = 
-  return (
-        <nav className="navbar">Navbar<
-         <div className="navbar-logo-container">
-            <h1>Kanban</h1>
-         </div>
-     <div className="navbar-main-container">
-        <h4>Place Board</h4>
-     </div>
-     <button className="btn"> Add new </button>
+type props = {
+    toggleShowCreateTask: () => void;
+    toggleShowProjectsDropdown: () => void;
+};
 
-  )
+export default function Navbar({
+    toggleShowCreateTask,
+    toggleShowProjectsDropdown,
+}: props) {
+    const { currentProject } = useBoardContext();
 
+    return (
+        <nav className="navbar">
+            <div className="navbar-logo-container">
+                <h1>Kanban</h1>
+            </div>
+            <div className="navbar-main-container">
+                <div
+                    className="navbar-dropdown"
+                    onClick={() => toggleShowProjectsDropdown()}
+                >
+                    <h4>{currentProject.name}</h4>
+                    <ChevronDown />
+                </div>
+                <button className="btn" onClick={() => toggleShowCreateTask()}>
+                    Add new task
+                </button>
+            </div>
+        </nav>
+    );
 }

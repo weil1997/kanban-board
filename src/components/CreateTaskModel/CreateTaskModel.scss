@@ -1,0 +1,78 @@
+.model-container {
+    position: fixed;
+    background-color: #00000055;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .model-card {
+        position: relative;
+        background-color: var(--bg-gray);
+        padding: 32px;
+        margin: 20px;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 480px;
+
+        .model-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .model-title {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            color: var(--text-gray);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid var(--bg-lines);
+            background-color: var(--bg-lines);
+            padding: 10px 20px;
+            outline: none;
+            color: var(--text);
+            margin-bottom: 6px;
+            resize: vertical;
+            max-height: 140px;
+
+            &:focus {
+                border-color: var(--primary);
+            }
+        }
+
+        .subtask-container {
+            position: relative;
+
+            svg {
+                width: 18px;
+                height: 18px;
+                right: 5px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                position: absolute;
+                color: var(--text-gray);
+            }
+        }
+
+        button {
+            border-radius: 8px;
+            width: 100%;
+            padding: 12px 0px;
+            margin-bottom: 15px;
+        }
+    }
+}

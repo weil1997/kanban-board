@@ -1,28 +1,16 @@
-import React from "react";
 import "./Sidebar.scss";
-import {} from "react-feather";
-import { Folder, Plus } from "react-feather";
+import { useBoardContext } from "../../context/BoardsContext";
+import ProjectsLinks from "../ProjectsLinks/ProjectsLinks";
 
 type Props = {};
 
-export default function ({}: Props) {
-  return (
-    <div className="sidebar">
-      <p>ALL boards (2)</p>
-      <ul className="sidebar-items">
-        <li className="active">
-          <Folder />
-          Place board
-        </li>
-        <li>
-          <Folder />
-          Place board
-        </li>
-        <li>
-          <Plus />
-          Create board
-        </li>
-      </ul>
-    </div>
-  );
+export default function Sidebar() {
+    const { projects } = useBoardContext();
+
+    return (
+        <div className="sidebar">
+            <p>ALL boards ({projects.length})</p>
+            <ProjectsLinks />
+        </div>
+    );
 }

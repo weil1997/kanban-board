@@ -3,12 +3,15 @@ import "./CreateTaskModel.scss";
 import { X } from "react-feather";
 import { useBoardContext } from "../../context/BoardsContext";
 
+// vi specifierar hur propsen för den komponenten ska se ut
 type Props = {
     toggleShowCreateTask: () => void;
 };
 
-export default function CreateTask({ toggleShowCreateTask }: Props) {
+// 14/17 har vi en funktion med usestate, usestate returnerar alltid en array. Det är alltisd en array med exakt två värden.. de första värdet kommer vara staten, och det andra kmr va en funktion för att uppdatera staten. varför vi destructerar är för vi inte vill ha en variabel  som vi får ut och varjegång vi får tillgång till staten som måste vi använda index 0 för att få ut den
+export default function CreateTaskModel({ toggleShowCreateTask }: Props) {
     const { createTicket } = useBoardContext();
+    const test = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [status, setStatus] = useState(0);
@@ -16,32 +19,37 @@ export default function CreateTask({ toggleShowCreateTask }: Props) {
 
     return (
         <div className="model-container">
-            <div className="new-task">
-                <div className="task-x" onClick={() => toggleShowCreateTask()}>
+            <div className="model-card">
+                <div
+                    className="model-close"
+                    onClick={() => toggleShowCreateTask()}
+                >
                     <X />
                 </div>
 
-                <h3 className="task-title">Creat new card</h3>
+                <h3 className="model-title">Create new ticket</h3>
 
                 <label htmlFor="title">Title</label>
                 <input
                     type="text"
                     id="title"
-                    placeholder="Insert title here..."
+                    placeholder="this is a title..."
+                    // här kör vi settitle, detta kommer att ädra om Title till värder e.target.value
+                    value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
 
                 <label htmlFor="description">Description</label>
-
                 <textarea
                     id="description"
-                    placeholder="Insert description here..."
+                    placeholder="this is a description..."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />
-                <label htmlFor="state">State</label>
+
+                <label htmlFor="status">Status</label>
                 <select
-                    name="state"
+                    name="status"
                     id="status"
                     value={status}
                     onChange={(e) => setStatus(parseInt(e.target.value))}
@@ -52,11 +60,12 @@ export default function CreateTask({ toggleShowCreateTask }: Props) {
                 </select>
 
                 <label>Subtasks</label>
+                {/* ctrl kc, subtasks är en array och vi mappar igenom arrayen. divern komemr vara ett element i din nya array. varje element i subtask arrayen kommer omvandlas till en div, varje div kommer ha ett input fält och en X ikon. vi lägger en curly bracket efter subtask mappen, och det som ä'r innanför curly bracketen  kommer att mappas igenom  */}
                 {subtasks.map((task, index) => (
                     <div className="subtask-container">
                         <input
                             type="text"
-                            placeholder="Insert title here..."
+                            placeholder="this is a title..."
                             onChange={(e) => {
                                 subtasks[index] = e.target.value;
                                 setSubtasks([...subtasks]);
@@ -65,9 +74,7 @@ export default function CreateTask({ toggleShowCreateTask }: Props) {
                         />
                         <X
                             onClick={() => {
-                                console.log(subtasks);
                                 subtasks.splice(index, 1);
-                                console.log(subtasks);
                                 setSubtasks([...subtasks]);
                             }}
                         />
@@ -79,14 +86,15 @@ export default function CreateTask({ toggleShowCreateTask }: Props) {
                 >
                     Add new task
                 </button>
+
                 <button
                     className="btn"
                     onClick={() => {
-                        createCard(title, description, subtasks, status);
+                        createTicket(title, description, subtasks, status);
                         toggleShowCreateTask();
                     }}
                 >
-                    Create card
+                    Create ticket
                 </button>
             </div>
         </div>

@@ -1,0 +1,47 @@
+.navbar {
+    background-color: var(--bg-gray);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--bg-lines);
+    .navbar-logo-container {
+        max-width: 280px;
+        width: 100%;
+        h1 {
+            font-size: 34px;
+        }
+    }
+    .navbar-main-container {
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+        align-items: center;
+
+        .navbar-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            svg {
+                display: none;
+            }
+        }
+
+        h4 {
+            font-size: 24px;
+        }
+        button {
+            padding: 12px 12px;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+    }
+    @media screen and (max-width: 800px) {
+        .navbar-logo-container {
+            display: none;
+        }
+        .navbar-main-container .navbar-dropdown svg {
+            display: block;
+        }
+    }
+}
