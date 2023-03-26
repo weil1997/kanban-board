@@ -5,7 +5,7 @@ import { useBoardContext } from "../../context/BoardsContext";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 export default function Board() {
-    const { currentProject } = useBoardContext();
+    const { currentProject, changeCurrentProjectBoard } = useBoardContext();
 
     return (
         <div className="board">
@@ -32,6 +32,7 @@ export default function Board() {
                         0,
                         removedTicket
                     );
+                    changeCurrentProjectBoard(board);
                 }}
             >
                 {currentProject.board.map((column, index) => (

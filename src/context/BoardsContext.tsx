@@ -14,6 +14,7 @@ interface Context {
         index: number
     ) => void;
     currentProject: Project;
+    changeCurrentProjectBoard: (board: Project["board"]) => void;
 }
 
 const BoardsContext = createContext<Context>({
@@ -22,6 +23,7 @@ const BoardsContext = createContext<Context>({
     changeBoard: () => {},
     createTicket: () => {},
     currentProject: {} as Project,
+    changeCurrentProjectBoard: () => {},
 });
 
 export function useBoardContext() {
@@ -37,7 +39,10 @@ export default function BoardsContextProvider({ children }: Props) {
         "project-data",
         projectsData
     );
-    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [selectedIndex, setSelectedIndex] = useLocalStorage(
+        "selectedIndex",
+        0
+    );
     const currentProject = projects[selectedIndex];
 
     function createProject(name: string) {
@@ -59,6 +64,12 @@ export default function BoardsContextProvider({ children }: Props) {
 
     function changeBoard(index: number) {
         setSelectedIndex(index);
+    }
+
+    function changeCurrentProjectBoard(board: Project["board"]) {
+        projects[selectedIndex].board = board;
+
+        setProjects([...projects]);
     }
 
     function createTicket(
@@ -84,6 +95,7 @@ export default function BoardsContextProvider({ children }: Props) {
                 currentProject,
                 changeBoard,
                 createTicket,
+                changeCurrentProjectBoard,
             }}
         >
             {children}

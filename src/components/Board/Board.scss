@@ -1,44 +1,48 @@
 .board {
-  padding: 24px;
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 50px;
+    padding: 24px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px;
 
-  .board-title {
-    display: flex;
-    gap: 6px;
-    align-items: center;
+    .board-title {
+        display: flex;
+        gap: 6px;
+        align-items: center;
 
-    .board-title-icon {
-      width: 20px;
-      height: 20px;
-      background: blue;
-      border-radius: 50%;
+        .board-title-icon {
+            width: 20px;
+            height: 20px;
+            background: blue;
+            border-radius: 50%;
 
-      &.todo {
-        background-color: #49c4e5;
-      }
+            &.todo {
+                background-color: #49c4e5;
+            }
 
-      &.doing {
-        background-color: #8471f2;
-      }
+            &.doing {
+                background-color: #8471f2;
+            }
 
-      &.done {
-        background-color: #67e2ae;
-      }
+            &.done {
+                background-color: #67e2ae;
+            }
+        }
+        h4 {
+            font-size: 12px;
+            font-weight: 700px;
+            letter-spacing: 2.4px;
+            color: var(--text-gray);
+        }
     }
-    h4 {
-      font-size: 12px;
-      font-weight: 700px;
-      letter-spacing: 2.4px;
-      color: var(--text-gray);
-    }
-  }
 
-  .board-column {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
+    .board-column {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+
+        > * {
+            margin-bottom: 15px;
+        }
+    }
 }
