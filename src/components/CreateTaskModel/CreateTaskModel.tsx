@@ -90,9 +90,15 @@ export default function CreateTaskModel({ toggleShowCreateTask }: Props) {
                 <button
                     className="btn"
                     onClick={() => {
-                        createTicket(title, description, subtasks, status);
-                        toggleShowCreateTask();
+                        createTicket(
+                            title,
+                            description,
+                            subtasks.filter((task) => task !== ""),
+                            status
+                        ),
+                            toggleShowCreateTask();
                     }}
+                    disabled={!title || !description}
                 >
                     Create ticket
                 </button>

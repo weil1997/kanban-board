@@ -46,7 +46,11 @@ export default function Projectslinks() {
                         onChange={(e) => setProjectName(e.target.value)}
                     />
 
-                    <button className="btn">create</button>
+                    {/* koden nedan för säger att om vi har ett project namn så ska det inte gå att create en new task */}
+
+                    <button className="btn" disabled={!projectName}>
+                        create
+                    </button>
                 </form>
             )}
         </div>
