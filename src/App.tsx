@@ -6,35 +6,35 @@ import ProjectsDropdown from "./components/ProjectsDropdown/ProjectsDropdown";
 import { useState } from "react";
 
 export default function App() {
-    const [showCreateTask, setShowCreateTask] = useState(false);
-    const [showProjectsDropdown, setProjectsDropdown] = useState(false);
+  const [showCreateTask, setShowCreateTask] = useState(false);
+  const [showProjectsDropdown, setProjectsDropdown] = useState(false);
 
-    function toggleShowCreateTask() {
-        setShowCreateTask(!showCreateTask);
-    }
+  function toggleShowCreateTask() {
+    setShowCreateTask(!showCreateTask);
+  }
 
-    function toggleShowProjectsDropdown() {
-        setProjectsDropdown(!showProjectsDropdown);
-    }
+  function toggleShowProjectsDropdown() {
+    setProjectsDropdown(!showProjectsDropdown);
+  }
 
-    return (
-        <div className="App">
-            <Navbar
-                toggleShowCreateTask={toggleShowCreateTask}
-                toggleShowProjectsDropdown={toggleShowProjectsDropdown}
-            />
-            <div className="main-container">
-                <Sidebar />
-                <Board />
-            </div>
-            {showCreateTask && (
-                <CreateTaskModel toggleShowCreateTask={toggleShowCreateTask} />
-            )}
-            {showProjectsDropdown && (
-                <ProjectsDropdown
-                    toggleShowProjectsDropdown={toggleShowProjectsDropdown}
-                />
-            )}
-        </div>
-    );
+  return (
+    <div className="App">
+      <Navbar
+        toggleShowCreateTask={toggleShowCreateTask}
+        toggleShowProjectsDropdown={toggleShowProjectsDropdown}
+      />
+      <div className="main-container">
+        <Sidebar />
+        <Board />
+      </div>
+      {showCreateTask && (
+        <CreateTaskModel toggleShowCreateTask={toggleShowCreateTask} />
+      )}
+      {showProjectsDropdown && (
+        <ProjectsDropdown
+          toggleShowProjectsDropdown={toggleShowProjectsDropdown}
+        />
+      )}
+    </div>
+  );
 }
