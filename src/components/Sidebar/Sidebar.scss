@@ -1,0 +1,20 @@
+.sidebar {
+    padding: 25px 0px;
+    border-right: 1px solid var(--bg-lines);
+    background-color: var(--bg-gray);
+    color: var(--text-gray);
+    // min-height: 100vh;
+    max-width: 280px;
+    width: 100%;
+    p {
+        padding: 0px 30px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 2px;
+    }
+
+    @media screen and (max-width: 800px) {
+        display: none;
+    }
+}
